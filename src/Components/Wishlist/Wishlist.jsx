@@ -8,11 +8,11 @@ import { CartContext } from '../../Context/CartContext';
 
 
 export default function Wishlist() {
-let {getwishProduct,deletewishProduct} = useContext(WishlistContext); //distruct the function and response from the context
-const [wishDetails , setwishDetails] = useState(null) //use state to get any details from the object of the product
+let {getwishProduct,deletewishProduct,wishDetails} = useContext(WishlistContext); //distruct the function and response from the context
+// const [wishDetails , setwishDetails] = useState(null) //use state to get any details from the object of the product
 let { addprotuct, numberItems, setnumberItems } = useContext(CartContext);
 
-
+/****************cart****************** */
 async function addtocart(id) {
   let response = await addprotuct(id);
   console.log(response.data);
@@ -26,6 +26,8 @@ async function addtocart(id) {
     setLoadingCart(true);
   }
 }
+/*****************wishlist******************** */
+
 async function getproduct() { //function bridge to put it in the use effect
   let response = await getwishProduct();  //main function from wishcontect
 

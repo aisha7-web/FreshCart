@@ -8,8 +8,8 @@ import { useLocation } from "react-router-dom";
 
 
 export default function Navbar() {
-  let { numberItems } = useContext(CartContext);
-  let { userLogin, setuserLogin } = useContext(UserContext);
+  let { numberItems ,setnumberItems } = useContext(CartContext);
+  let { userLogin,setuserLogin } = useContext(UserContext);
   let navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -18,6 +18,12 @@ export default function Navbar() {
     localStorage.removeItem("userToken");
     setuserLogin(null);
     navigate("/login");
+  }
+
+  function removenumber() {
+    localStorage.removeItem("numberItems");
+    setnumberItems(null)
+
   }
 
   return (
@@ -130,10 +136,11 @@ export default function Navbar() {
           </ul>
 
           <ul className="flex gap-4">
-            {userLogin ? (
-              <li className="text-slate-500 cursor-pointer" onClick={SignOut}>
-                Sign Out
-              </li>
+            {userLogin != null ? (
+            <li className="text-slate-500 cursor-pointer" onClick={() => { SignOut(); removenumber(); }}>
+            Sign Out
+          </li>
+          
             ) : (
               <>
                 <li className="text-slate-500">
@@ -189,10 +196,11 @@ export default function Navbar() {
             </>
           )}
           <li className="border-t pt-3">
-            {userLogin ? (
-              <span className="text-slate-500 cursor-pointer" onClick={SignOut}>
-                Sign Out
-              </span>
+            {userLogin != null ? (
+             <span className="text-slate-500 cursor-pointer" onClick={() => { SignOut(); removenumber(); }}>
+             Sign Out
+           </span>
+           
             ) : (
               <>
                 <Link to="login" onClick={() => setMenuOpen(false)}>Login</Link>

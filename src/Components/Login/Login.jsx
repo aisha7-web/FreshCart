@@ -18,7 +18,7 @@ export default function Register() {
 
   async function handleRegister(value) {
     setisLoading(true)
-    let { data } = await axios
+    await axios
       .post(`https://ecommerce.routemisr.com/api/v1/auth/signin`, value)
       .then((res) => {
         setisLoading(false)
@@ -136,21 +136,20 @@ export default function Register() {
   
   
           {/* Submit Button */}
-          <div className="flex gap-3 items-center">
             <button
               type="submit"
               className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 
-              font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex items-center justify-center my-4"
             >
               {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
             </button>
   
             <Link to={"/Register"}>
-              <span className="text-blue-600 underline">Don't you have an account? Register Now</span>
-            </Link>
-          </div>
+              <span className="text-blue-600 underline p-3 ">Don't you have an account? Register Now</span>
+            </Link><br></br>
+          
           <Link to={"/ForgetPassword"}>
-              <span className="text-blue-600 hover:text-black">forget your password ?</span>
+              <span className="text-blue-600 hover:text-black m-5">forget your password ?</span>
             </Link>
         </form>
       </div>

@@ -17,7 +17,7 @@ export default function Register() {
 
   async function handleRegister(value) {
     setisLoading(true)
-    let { data } = await axios
+    await axios
       .post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, value)
       .then((res) => {
         setisLoading(false)

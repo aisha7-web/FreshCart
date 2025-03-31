@@ -32,9 +32,9 @@ export default function MainSlider() {
       <div className="w-full md:w-3/4 ">
       <div className="slider-container">
       <Slider {...settings}>
-      <img src={slide1} alt="" className='w-full h-[400px] ' />
-      <img src={slide4} alt="" className='w-full h-[400px] ' />
-      <img src={slide5} alt="" className='w-full h-[400px] ' />
+      <img src={slide1} alt="" className='w-full h-[400px] object-cover' />
+      <img src={slide4} alt="" className='w-full h-[400px] object-cover' />
+      <img src={slide5} alt="" className='w-full h-[400px] object-cover' />
       </Slider>
       </div>
       
@@ -42,8 +42,8 @@ export default function MainSlider() {
       
       </div>
       <div className="w-full flex  md:w-1/4 md:flex-col ">
-      <img src={slide2} alt="" className='w-1/2 md:w-full h-[200px]'  />
-      <img src={slide3} alt="" className='w-1/2 md:w-full h-[200px]'  />
+      <img src={slide2} alt="" className='w-1/2 md:w-full h-[200px] object-cover'  />
+      <img src={slide3} alt="" className='w-1/2 md:w-full h-[200px] '  />
       </div>
     </div>
     </>

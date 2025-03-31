@@ -6,11 +6,13 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
-  let { getproducts, updatecount, Deleteproduct, numberItems, setnumberItems } =
+  let { getproducts, updatecount, Deleteproduct, numberItems, setnumberItems ,Clearcart} =
     useContext(CartContext);
   const [cartDetails, setcartDetails] = useState(null);
+  const [isLoading, setisLoading] = useState(false);
 
   async function getcartItems() {
+    setisLoading(true)
     let response = await getproducts();
 
     console.log(response.data);
@@ -44,12 +46,24 @@ export default function Cart() {
     }
   }
 
+  async function clearItems (){
+    let response = await Clearcart();
+    console.log("clearcart")
+    if (response.data.message == "success") {
+      setcartDetails(response.data.data);
+      setnumberItems(0);
+      
+      
+    }
+  }
+
   useEffect(() => {
     getcartItems();
   }, []);
 
   return (
     <>
+    
       {cartDetails?.products.length > 0 ? (
         <>
           <h2 className="text-xl text-emerald-600 font-bold font-serif capitalize p-4">
@@ -131,6 +145,7 @@ export default function Cart() {
 
 
             </table>
+            <button className="btn" onClick={clearItems}>Clear</button>
             <Link to="/checkout">
               <button className="btn capitalize my-3">Check Out</button>
             </Link>

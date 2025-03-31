@@ -89,15 +89,15 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className="row items-center justify-between ">
+      <div className="row items-center justify-center gap-5 md:gap-10">
         <div className="w-full mb-4 md:w-1/4">
           <Slider {...settings}>
             {product?.images.map((src) => (
-              <img src={src} />
+              <img src={src}/>
             ))}
           </Slider>
         </div>
-        <div className="w-3/4 ">
+        <div className="container md:w-2/4 w-full ">
           <div className=" text-center">
             <h3 className="font-semibold capitalize text-2xl">
               {product?.title}
@@ -136,7 +136,9 @@ export default function ProductDetails() {
                 </button>
               </div>
         </div>
-      </div>
+        </div>
+      
+     
 
       <div className="row">
         {relatedproducts.length > 0 ? (
